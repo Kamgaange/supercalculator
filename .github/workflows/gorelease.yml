@@ -24,7 +24,7 @@ jobs:
         uses: goreleaser/goreleaser-action@v4
         with:
           version: latest
-          main-go: super_calculator/super_calculator/main.go
+          main-go: supercalculator/super_calculator/super_calculator/main.go
           args: release --snapshot --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
