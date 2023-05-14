@@ -19,7 +19,7 @@ jobs:
         with:
           go-version: 1.17
       - name: Change directory
-        run: cd super_calculator
+        run: cd ..
       - name: Build and package with goreleaser
         uses: goreleaser/goreleaser-action@v4
         with:
