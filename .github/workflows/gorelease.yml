@@ -8,8 +8,6 @@ on:
 
 jobs:
   build:
-  
-  
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -20,13 +18,13 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: 1.17
-      - name: Change directory to repository root
-       
+      - name: Change directory
+        run: cd supercalculator
       - name: Build and package with goreleaser
         uses: goreleaser/goreleaser-action@v4
         with:
           version: latest
-          
+          main-go: super_calculator/main.go
           args: release --snapshot --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
