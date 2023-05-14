@@ -22,7 +22,7 @@ jobs:
         uses: goreleaser/goreleaser-action@v4
         with:
           version: latest
-          workdir: supercalculator/super_calculator/super_calculator/
+          workdir: super_calculator/super_calculator/
           args: release --snapshot --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
