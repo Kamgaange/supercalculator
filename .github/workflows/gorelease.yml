@@ -22,7 +22,8 @@ jobs:
         uses: goreleaser/goreleaser-action@v4
         with:
           version: latest
-          args: release --snapshot --clean --main=./supercalculator/supercalculator/main.go
+          main-go: supercalculator/supercalculator/main.go  # Spécifiez ici le chemin vers votre fichier main.go
+          args: release --snapshot --clean
         env:
           GITHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Create Docker image and push to Docker Hub
