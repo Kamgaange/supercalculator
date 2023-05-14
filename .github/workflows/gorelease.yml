@@ -29,10 +29,10 @@ jobs:
       - name: Create Docker image and push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ./super_calculator
           push: true
           tags: |
-            angealexandra/supercalculator:${{ github.ref }}
+            ${{ secrets.DOCKERHUB_USERNAME}}/supercalculator
       - name: Create GitHub release
         id: create_release
         uses: actions/create-release@v1
