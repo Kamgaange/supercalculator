@@ -11,8 +11,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
       - name: Run hadolint analysis
         run: |
          docker run --rm -i hadolint/hadolint < ./super_calculator/super_calculator/Dockerfile
-
-
