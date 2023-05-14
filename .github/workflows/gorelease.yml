@@ -9,6 +9,7 @@ on:
 jobs:
   build:
   
+  
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -20,7 +21,7 @@ jobs:
         with:
           go-version: 1.17
       - name: Change directory to repository root
-        run: cd ..
+       
       - name: Build and package with goreleaser
         uses: goreleaser/goreleaser-action@v4
         with:
