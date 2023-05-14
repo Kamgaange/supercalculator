@@ -37,7 +37,7 @@ jobs:
           context: ./super_calculator
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME}}/supercalculator:${{ github.ref }}
+            ${{ secrets.DOCKERHUB_USERNAME}}/supercalculator
       - name: Create GitHub release
         id: create_release
         uses: actions/create-release@v1
