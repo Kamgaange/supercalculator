@@ -31,7 +31,7 @@ jobs:
           context: .
           push: true
           tags: |
-            angealexandra/supercalculator:${{ github.ref }}
+            angealexandra/supercalculator/supercalculator:${{ github.ref }}
       - name: Create GitHub release
         id: create_release
         uses: actions/create-release@v1
