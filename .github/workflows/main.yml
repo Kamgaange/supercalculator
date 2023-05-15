@@ -1,0 +1,38 @@
+name: Lint Workflow
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+jobs:
+  semgrep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run Semgrep Analysis
+        run: |
+          docker run --rm -v $PWD:/code returntocorp/semgrep --config=p/default /code
+          
+  hadolint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run Hadolint Analysis
+        run: |
+          docker run --rm -v $PWD:/code hadolint/hadolint hadolint /code/Dockerfile
+
+  super-linter:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run Super-Linter Analysis
+        uses: github/super-linter@v4
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          commit-sha: ${{ github.sha }}
+          file-path: '.'
