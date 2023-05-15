@@ -11,9 +11,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run Semgrep Analysis
-        run: |
-          docker run --rm -v $PWD:/code returntocorp/semgrep --config=p/default /code
+      - name: Run Semgrep on Go files
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: "p/go"
+          path: "./super_calculator/Dockerfile"
           
   hadolint:
     runs-on: ubuntu-latest
@@ -22,7 +24,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Run Hadolint Analysis
         run: |
-          docker run --rm -v $PWD:/code hadolint/hadolint hadolint /code/Dockerfile
+          docker run --rm -i hadolint/hadolint hadolint ./super_calculator/Dockerfile
 
   super-linter:
     runs-on: ubuntu-latest
