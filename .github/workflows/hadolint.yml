@@ -2,7 +2,7 @@ name: "hadolint"
 
 on:
   pull_request:
-  push: 
+  push:
       branches:
         - main
   workflow_dispatch:
@@ -14,5 +14,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install Hadolint
+        run: docker pull ghcr.io/hadolint/hadolint
+
       - name: Run Hadolint Analysis
-        run: docker run --rm -i hadolint/hadolint hadolint './super_calculator/Dockerfile'
+        run: docker run --rm -i -v "${PWD}/super_calculator:/code" ghcr.io/hadolint/hadolint hadolint /code/Dockerfile
