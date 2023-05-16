@@ -25,8 +25,8 @@ jobs:
       - name: Run Hadolint Analysis
         run: |
           docker run --rm -i hadolint/hadolint \
-            --ignore=DL3020 \
-            --ignore=DL3006 \
+            --override-error=DL3020 \
+            --override-warning=DL3006 \
             < ./super_calculator/Dockerfile
           
   super-linter:
