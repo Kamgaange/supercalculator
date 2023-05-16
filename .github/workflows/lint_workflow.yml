@@ -28,7 +28,8 @@ jobs:
             -v ${{ github.workspace }}/super_calculator:/root \
             hadolint/hadolint \
             --config /root/.hadolint.yaml \
-            < /root/Dockerfile
+            < /root/super_calculator/Dockerfile
+
 
   super-linter:
     runs-on: ubuntu-latest
