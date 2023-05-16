@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Run Hadolint Analysis
         run: |
-          docker run --rm -i hadolint/hadolint < ./super_calculator/Dockerfile1
+          docker run --rm -i hadolint/hadolint < ./super_calculator/Dockerfile
 
   super-linter:
     runs-on: ubuntu-latest
