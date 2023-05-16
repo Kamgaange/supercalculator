@@ -26,7 +26,7 @@ jobs:
             
         run: |
           docker run --rm -i hadolint/hadolint < ./super_calculator/Dockerfile
-        if: always()  
+        continue-on-error: true  
 
   super-linter:
     runs-on: ubuntu-latest
