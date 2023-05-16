@@ -23,10 +23,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run Hadolint Analysis
-        if: always()      
+            
         run: |
           docker run --rm -i hadolint/hadolint < ./super_calculator/Dockerfile
-          
+        if: always()  
 
   super-linter:
     runs-on: ubuntu-latest
