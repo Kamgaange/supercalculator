@@ -1,0 +1,6 @@
+# Fichier de configuration Hadolint
+
+# Liste des règles à ignorer
+ignore:
+  - DL3020
+  - DL3006
