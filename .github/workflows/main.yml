@@ -15,7 +15,7 @@ jobs:
         uses: returntocorp/semgrep-action@v1
         with:
           config: "p/go"
-          path: "./super_calculator/Dockerfile"
+          path: "./super_calculator/Dockerfilehado"
           
   hadolint:
     runs-on: ubuntu-latest
