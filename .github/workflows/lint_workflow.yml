@@ -25,9 +25,10 @@ jobs:
       - name: Run Hadolint Analysis
         run: |
           docker run --rm -i \
-            -v ${{ github.workspace }}/super_calculator/.hadolint.yaml:/root/.hadolint.yaml \
+            -v ${{ github.workspace }}/super_calculator:/root \
             hadolint/hadolint \
-            < ./super_calculator/Dockerfile
+            --config /root/.hadolint.yaml \
+            < /root/Dockerfile
 
   super-linter:
     runs-on: ubuntu-latest
