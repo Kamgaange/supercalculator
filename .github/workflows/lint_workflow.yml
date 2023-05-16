@@ -25,10 +25,9 @@ jobs:
       - name: Run Hadolint Analysis
         run: |
           docker run --rm -i hadolint/hadolint \
-            --override-error=DL3020 \
-            --override-warning=DL3006 \
+            --config ./super_calculator/.hadolint.yaml \
             < ./super_calculator/Dockerfile
-          
+
   super-linter:
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
