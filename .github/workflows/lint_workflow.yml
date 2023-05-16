@@ -15,7 +15,7 @@ jobs:
         uses: returntocorp/semgrep-action@v1
         with:
           config: "p/go"
-          path: "./super_calculator/Dockerfilelint"
+          path: "./super_calculator/Dockerfile"
           
   hadolint:
     runs-on: ubuntu-latest
@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Run Hadolint Analysis
         run: |
-          docker run --rm -i hadolint/hadolint < ./super_calculator/Dockerfilelint
+          docker run --rm -i hadolint/hadolint < ./super_calculator/Dockerfile
 
   super-linter:
     runs-on: ubuntu-latest
