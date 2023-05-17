@@ -6,35 +6,38 @@ on:
   workflow_dispatch:
 
 jobs:
+# job pour exécuter le semgrep
   semgrep:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run Semgrep on Go files
+      - name: Executer semgrep sur les fichiers Go
+      
+      # analyse semgrep avec les fichiers go
         uses: returntocorp/semgrep-action@v1
         with:
           config: "p/go"
           path: "./super_calculator/Dockerfile"
-          
+  # job pour executer hadolint        
   hadolint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run Hadolint Analysis
-            
+      - name: executer Hadolint Analysis          
         run: |
           docker run --rm -i hadolint/hadolint < ./super_calculator/Dockerfile 
+    # permet de continuer le code meme si erreur
         continue-on-error: true  
-
+# job pour executer super lint
   super-linter:
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run Super-Linter Analysis
+      - name: Executer Super-Linter Analysis
         uses: github/super-linter@v4
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
