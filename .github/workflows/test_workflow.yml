@@ -11,16 +11,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+      # executer le job a chaque version de go spécifiée
         go-version: [1.17, 1.18, 1.19]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Go ${{ matrix.go-version }}
+      - name: Configurer Go ${{ matrix.go-version }}
         uses: actions/setup-go@v2
         with:
           go-version: ${{ matrix.go-version }}
 
-      - name: Run tests
+      - name: executer tests
+      # definit le repertoire de travail pour l'execution des tests
         working-directory: ./super_calculator
         run: go test
